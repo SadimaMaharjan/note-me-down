@@ -1,14 +1,23 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "This app allows user to take notes and save them. This application uses an Express.js back end and saves and retrieves note data from a JSON file.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
-  }
+    "express": "^4.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SadimaMaharjan/note-me-down.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SadimaMaharjan/note-me-down/issues"
+  },
+  "homepage": "https://github.com/SadimaMaharjan/note-me-down#readme"
 }
