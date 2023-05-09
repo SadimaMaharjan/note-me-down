@@ -38,6 +38,6 @@ The following images show the web application's appearance and functionality:
 
 ## Deployment
 
-The app is deployed in Heroku accessed with the llink below:
+The app is deployed in Heroku accessed with the link below:
 
 [Heroku Deployment Link](https://note-me-down.herokuapp.com/)
