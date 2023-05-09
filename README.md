@@ -1,4 +1,4 @@
-# note-me-down
+# Note-Me-Down: A Note Taking App
 
 This app allows user to take notes and save them. This application uses an Express.js back end and saves and retrieves note data from a JSON file.
 
