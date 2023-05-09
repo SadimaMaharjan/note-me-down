@@ -21,6 +21,49 @@ app.use(express.json());
 // Static middleware pointing to the public folder
 app.use(express.static("public"));
 
+// POST api/notes should receive a new note to save and add it to db.json file
+app.post("/api/notes", (req, res) => {
+  fs.readFile("db/db.json", "utf8", (error, data) => {
+    if (error) throw error;
+    const db = JSON.parse(data);
+    //res.json(db);
+
+    // creating body for note
+    let userNote = {
+      title: req.body.title,
+      text: req.body.text,
+      // creating unique id for each note
+      id: uniqid(),
+    };
+    // pushing created note to be written in the db.json file
+    db.push(userNote);
+    fs.writeFile("db/db.json", JSON.stringify(db), (writeErr) => {
+      writeErr
+        ? console.error(writeErr)
+        : console.info("Successfully updated notes!");
+      res.json(userNote);
+    });
+  });
+});
+
+// DELETE should receive a query parameter that contains the id of a note to delete
+
+app.delete("/api/notes/:id", (req, res) => {
+  fs.readFile("db/db.json", "utf8", (error, data) => {
+    if (error) throw error;
+    let notes = JSON.parse(data);
+    const arrayOfNotes = notes.filter((note) => {
+      return note.id !== req.params.id;
+    });
+    fs.writeFile("db/db.json", JSON.stringify(arrayOfNotes), (writeErr) => {
+      writeErr
+        ? console.error(writeErr)
+        : console.info("Successfully deleted notes!");
+      res.json(arrayOfNotes);
+    });
+  });
+});
+
 // GET Route for homepage
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
@@ -39,31 +82,8 @@ app.get("/api/notes", (req, res) => {
   });
 });
 
-// POST api/notes should receive a new note to save and add it to db.json file
-app.post("/api/notes", (req, res) => {
-  let db = fs.readFileSync("db/db.json");
-  db = JSON.parse(db);
-  res.json(db);
-  // creating body for note
-  let userNote = {
-    title: req.body.title,
-    text: req.body.text,
-    // creating unique id for each note
-    id: uniqid(),
-  };
-  // pushing created note to be written in the db.json file
-  db.push(userNote);
-  fs.writeFileSync("db/db.json", JSON.stringify(db));
-  res.json(db);
-});
-
-// DELETE should receive a query parameter that contains the id of a note to delete
-
-app.delete("/api/notes/:id", (req, res) => {
-  fs.readFile("db/db.json", (error, data) => {
-    if (error) throw error;
-    let notes = JSON.parse(data);
-  });
+app.get("api/notes/:id", (req, res) => {
+  res.json(notes[req.params.id]);
 });
 
 // listen() method is responsible for listening for incoming connections on the specified port
