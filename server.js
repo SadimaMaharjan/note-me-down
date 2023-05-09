@@ -1,8 +1,10 @@
 // import Express.js
 const express = require("express");
 
+//for unique id
 var uniqid = require("uniqid");
 
+//import file system
 const fs = require("fs");
 
 // Import built-in Node.js package 'path' to resolve path of files that are located on the server
