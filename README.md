@@ -36,6 +36,8 @@ The following images show the web application's appearance and functionality:
 
 ![When + is clicked and new note is written](./public/assets/images/screenshot2.png)
 
+![gif file](./public/assets/images/note-me-down-app.gif)
+
 ## Deployment
 
 The app is deployed in Heroku accessed with the link below:
