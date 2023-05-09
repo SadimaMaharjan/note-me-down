@@ -32,7 +32,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 The following images show the web application's appearance and functionality:
 
-![When Get Started is clicked, the following page pops](./public/assets/images/screenshot1.png)
+![When Get Started is clicked, the following page pops showing existing notes](./public/assets/images/screenshot1.png)
 
 ![When + is clicked and new note is written](./public/assets/images/screenshot2.png)
 
